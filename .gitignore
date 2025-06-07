@@ -1,0 +1,138 @@
+# ============================
+# GITIGNORE UNIFICATO - ROOT
+# Contiene regole per:
+# - server/ (Spring Boot + Maven)
+# - gymBro_client/ (Ionic + Capacitor)
+# ============================
+
+# --- SERVER (Spring Boot + Maven) ---
+
+# Maven target directory (build output)
+ /server/target/
+
+# Maven wrapper jar (utile tenerlo)
+/server/.mvn/wrapper/maven-wrapper.jar
+
+# Evitare di ignorare build in src, se usi build locali:
+/server/**/src/main/**/target/
+/server/**/src/main/**/build/
+/server/**/src/test/**/build/
+
+# Eclipse, Spring Tools e IDE files
+/server/.apt_generated
+/server/.classpath
+/server/.factorypath
+/server/.project
+/server/.settings
+/server/.springBeans
+/server/.sts4-cache
+
+# Maven wrapper scripts (opzionale ma consigliato tracciare)
+/server/mvnw
+/server/mvnw.cmd
+
+# IDE specifici
+/server/.idea/
+/server/*.iws
+/server/*.iml
+/server/*.ipr
+
+# NetBeans
+/server/nbproject/private/
+/server/nbbuild/
+/server/dist/
+/server/nbdist/
+/server/.nb-gradle/
+/server/build/
+
+# Gradle files (molto usati in Android, ma se usi anche Gradle in server)
+/server/.gradle/
+/server/build/
+
+# --- CLIENT (Ionic + Capacitor) ---
+
+# Node modules (dipendenze)
+ /gymBro_client/node_modules/
+
+# Log di npm / yarn
+ /gymBro_client/npm-debug.log
+ /gymBro_client/yarn-error.log
+
+# Capacitor / Ionic build output e cartelle temporanee
+ /gymBro_client/www/
+ /gymBro_client/platforms/
+ /gymBro_client/plugins/
+ /gymBro_client/.ionic
+
+# Angular / Ionic build output
+ /gymBro_client/dist/
+ /gymBro_client/tmp/
+ /gymBro_client/out-tsc/
+ /gymBro_client/bazel-out/
+
+# Cache e temp di Angular e Sass
+ /gymBro_client/.angular/
+ /gymBro_client/.angular/cache/
+ /gymBro_client/.sass-cache/
+ /gymBro_client/.nx/
+ /gymBro_client/.nx/cache/
+ /gymBro_client/connect.lock
+
+# Test e coverage reports
+ /gymBro_client/coverage/
+ /gymBro_client/libpeerconnection.log
+ /gymBro_client/testem.log
+ /gymBro_client/typings/
+
+# VS Code settings (traccia solo i file condivisi)
+ /gymBro_client/.vscode/
+!/gymBro_client/.vscode/settings.json
+!/gymBro_client/.vscode/tasks.json
+!/gymBro_client/.vscode/launch.json
+!/gymBro_client/.vscode/extensions.json
+
+# IDE client specifici
+ /gymBro_client/.idea/
+ /gymBro_client/*.iws
+ /gymBro_client/*.iml
+ /gymBro_client/*.ipr
+
+# Android build output (importante da ignorare)
+/gymBro_client/android/build/
+/gymBro_client/android/.gradle/
+/gymBro_client/android/app/build/
+
+# Gradle Wrapper files (vanno tracciati, quindi non ignorarli)
+!/gymBro_client/android/gradle/wrapper/gradle-wrapper.jar
+!/gymBro_client/android/gradlew
+!/gymBro_client/android/gradlew.bat
+
+# OS e file temporanei
+*~
+*.sw[mnpcod]
+*.tmp
+*.tmp.*
+UserInterfaceState.xcuserstate
+$RECYCLE.BIN/
+
+# Log files generali
+*.log
+log.txt
+
+# Sourcemaps, coverage, versions
+/.sourcemaps
+/.versions
+/coverage
+
+# IDEs generici
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
