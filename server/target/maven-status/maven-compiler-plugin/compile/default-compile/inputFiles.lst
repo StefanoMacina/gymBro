@@ -38,6 +38,7 @@ C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room
 C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room\entities\workoutDayExercise\WorkoutDayExerciseRepository.java
 C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room\crud\BaseDTO.java
 C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room\entities\workoutDay\WorkoutDayRepository.java
+C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room\config\CorsConfig.java
 C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room\crud\GenericRepository.java
 C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room\service\NameableService.java
 C:\Users\macli\Desktop\Home\Projects\gymBro\server\src\main\java\com\macina\room\entities\WorkoutPlan\WorkoutPlanController.java

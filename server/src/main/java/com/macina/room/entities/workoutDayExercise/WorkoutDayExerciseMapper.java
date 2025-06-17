@@ -13,6 +13,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public abstract class WorkoutDayExerciseMapper implements GenericMapper<WorkoutDayExerciseDTO, WorkoutDayExercise> {
 
     @Mapping(target = "workoutDayId", source = "workoutDay.id")
+    @Mapping(target = "exercise", source = "exercise")
     //@Mapping(target = "exercise", source = "exercise")
     public abstract WorkoutDayExerciseDTO toDto(WorkoutDayExercise entity);
 

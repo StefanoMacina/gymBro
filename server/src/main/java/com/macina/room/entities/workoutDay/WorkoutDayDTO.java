@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkoutDayDTO extends BaseDTO {
+    private String name;
     private short sequence;
     private Long workoutPlanId;
     private List<WorkoutDayExerciseDTO> exercises;

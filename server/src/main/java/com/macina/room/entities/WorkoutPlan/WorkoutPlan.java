@@ -4,16 +4,14 @@ import com.macina.room.crud.BaseEntity;
 import com.macina.room.entities.workoutDay.WorkoutDay;
 import com.macina.room.entities.user.UserApp;
 import com.macina.room.interfaces.Nameable;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Comment;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -31,5 +29,14 @@ public class WorkoutPlan extends BaseEntity implements Nameable {
 
     @OneToMany(mappedBy = "workoutPlan", cascade = CascadeType.ALL)
     private List<WorkoutDay> days;
+
+    private LocalDate startDate;
+
+    private LocalDate endDate;
+
+    private Boolean isActive;
+
+    private Boolean isBuiltFromUser = false;
+
 
 }

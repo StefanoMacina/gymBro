@@ -4,6 +4,7 @@ import com.macina.room.crud.BaseDTO;
 import com.macina.room.entities.workoutDay.WorkoutDayDTO;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter @Setter
@@ -15,6 +16,13 @@ public class WorkoutPlanDTO extends BaseDTO {
 
     private Long userId;
 
-    private List<WorkoutDayDTO> days;
+    private LocalDate startDate;
+
+    private LocalDate endDate;
+
+    private Boolean isActive;
+
+    private Boolean isBuiltFromUser;
+    //private List<WorkoutDayDTO> days;
 
 }

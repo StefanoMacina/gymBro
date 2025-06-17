@@ -13,7 +13,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public abstract class WorkoutPlanMapper implements GenericMapper<WorkoutPlanDTO, WorkoutPlan> {
 
     @Mapping(target = "userId", source = "user.id")
-    @Mapping(target = "days", source = "days")
+    //@Mapping(target = "days", source = "days")
     public abstract WorkoutPlanDTO toDto(WorkoutPlan entity);
 
     @Mapping(target = "user", ignore = true)
@@ -24,6 +24,12 @@ public abstract class WorkoutPlanMapper implements GenericMapper<WorkoutPlanDTO,
     public WorkoutPlanDTO updateEntityFromDto(WorkoutPlanDTO dto, WorkoutPlan entity) {
         if (dto.getName() != null)
             entity.setName(dto.getName());
+        if(dto.getStartDate() != null)
+            entity.setStartDate(dto.getStartDate());
+        if(dto.getEndDate() != null)
+            entity.setEndDate(dto.getEndDate());
+        if(dto.getIsActive() != null)
+            entity.setIsActive(dto.getIsActive());
 
         return toDto(entity);
     }

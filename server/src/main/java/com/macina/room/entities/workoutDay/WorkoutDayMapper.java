@@ -24,7 +24,8 @@ public abstract class WorkoutDayMapper implements GenericMapper<WorkoutDayDTO, W
     public WorkoutDayDTO updateEntityFromDto(WorkoutDayDTO dto, WorkoutDay entity) {
         if(dto.getSequence() > 0)
             entity.setSequence(dto.getSequence());
-
+        if(dto.getName() != null)
+            entity.setName(dto.getName());
         return toDto(entity);
     }
 }

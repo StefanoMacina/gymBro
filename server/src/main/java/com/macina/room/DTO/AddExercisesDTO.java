@@ -12,7 +12,7 @@ import java.util.List;
 @Getter @Setter
 public class AddExercisesDTO {
 
-    private long workoutDay; //in questo giorno aggiungi gli exercise sotto
+    private long workoutDay;
 
     private List<ExerciseMapDTO> exercises;
 }

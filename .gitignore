@@ -53,6 +53,7 @@
 
 # Node modules (dipendenze)
  /gymBro_client/node_modules/
+ /gymBro_client/.angular/
 
 # Log di npm / yarn
  /gymBro_client/npm-debug.log

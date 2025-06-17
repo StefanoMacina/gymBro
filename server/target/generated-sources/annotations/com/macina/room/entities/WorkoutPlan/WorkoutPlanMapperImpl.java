@@ -1,25 +1,16 @@
 package com.macina.room.entities.WorkoutPlan;
 
 import com.macina.room.entities.user.UserApp;
-import com.macina.room.entities.workoutDay.WorkoutDay;
-import com.macina.room.entities.workoutDay.WorkoutDayDTO;
-import com.macina.room.entities.workoutDay.WorkoutDayMapper;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.processing.Generated;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-07T18:10:39+0200",
+    date = "2025-06-17T12:19:04+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
 public class WorkoutPlanMapperImpl extends WorkoutPlanMapper {
-
-    @Autowired
-    private WorkoutDayMapper workoutDayMapper;
 
     @Override
     public WorkoutPlanDTO toDto(WorkoutPlan entity) {
@@ -30,11 +21,14 @@ public class WorkoutPlanMapperImpl extends WorkoutPlanMapper {
         WorkoutPlanDTO workoutPlanDTO = new WorkoutPlanDTO();
 
         workoutPlanDTO.setUserId( entityUserId( entity ) );
-        workoutPlanDTO.setDays( workoutDayListToWorkoutDayDTOList( entity.getDays() ) );
         workoutPlanDTO.setId( entity.getId() );
         workoutPlanDTO.setCreatedAt( entity.getCreatedAt() );
         workoutPlanDTO.setUpdatedAt( entity.getUpdatedAt() );
         workoutPlanDTO.setName( entity.getName() );
+        workoutPlanDTO.setStartDate( entity.getStartDate() );
+        workoutPlanDTO.setEndDate( entity.getEndDate() );
+        workoutPlanDTO.setIsActive( entity.getIsActive() );
+        workoutPlanDTO.setIsBuiltFromUser( entity.getIsBuiltFromUser() );
 
         return workoutPlanDTO;
     }
@@ -51,6 +45,10 @@ public class WorkoutPlanMapperImpl extends WorkoutPlanMapper {
         workoutPlan.setCreatedAt( dto.getCreatedAt() );
         workoutPlan.setUpdatedAt( dto.getUpdatedAt() );
         workoutPlan.setName( dto.getName() );
+        workoutPlan.setStartDate( dto.getStartDate() );
+        workoutPlan.setEndDate( dto.getEndDate() );
+        workoutPlan.setIsActive( dto.getIsActive() );
+        workoutPlan.setIsBuiltFromUser( dto.getIsBuiltFromUser() );
 
         return workoutPlan;
     }
@@ -61,18 +59,5 @@ public class WorkoutPlanMapperImpl extends WorkoutPlanMapper {
             return null;
         }
         return user.getId();
-    }
-
-    protected List<WorkoutDayDTO> workoutDayListToWorkoutDayDTOList(List<WorkoutDay> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<WorkoutDayDTO> list1 = new ArrayList<WorkoutDayDTO>( list.size() );
-        for ( WorkoutDay workoutDay : list ) {
-            list1.add( workoutDayMapper.toDto( workoutDay ) );
-        }
-
-        return list1;
     }
 }

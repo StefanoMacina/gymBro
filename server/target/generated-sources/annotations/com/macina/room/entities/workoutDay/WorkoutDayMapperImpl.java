@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-07T18:10:39+0200",
+    date = "2025-06-17T12:19:03+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
@@ -34,6 +34,7 @@ public class WorkoutDayMapperImpl extends WorkoutDayMapper {
         workoutDayDTO.setId( entity.getId() );
         workoutDayDTO.setCreatedAt( entity.getCreatedAt() );
         workoutDayDTO.setUpdatedAt( entity.getUpdatedAt() );
+        workoutDayDTO.setName( entity.getName() );
         workoutDayDTO.setSequence( entity.getSequence() );
 
         return workoutDayDTO;
@@ -50,6 +51,7 @@ public class WorkoutDayMapperImpl extends WorkoutDayMapper {
         workoutDay.setId( dto.getId() );
         workoutDay.setCreatedAt( dto.getCreatedAt() );
         workoutDay.setUpdatedAt( dto.getUpdatedAt() );
+        workoutDay.setName( dto.getName() );
         workoutDay.setSequence( dto.getSequence() );
 
         return workoutDay;

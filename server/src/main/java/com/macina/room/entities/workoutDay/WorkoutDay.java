@@ -3,6 +3,7 @@ package com.macina.room.entities.workoutDay;
 import com.macina.room.crud.BaseEntity;
 import com.macina.room.entities.WorkoutPlan.WorkoutPlan;
 import com.macina.room.entities.workoutDayExercise.WorkoutDayExercise;
+import com.macina.room.interfaces.Nameable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,9 @@ import java.util.List;
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 @Comment("Un esercizio svolto in un certo giorno. Contiene set, ripetizioni e note.")
-public class WorkoutDay extends BaseEntity {
+public class WorkoutDay extends BaseEntity implements Nameable {
+
+    private String name;
 
     private short sequence;
 
@@ -28,4 +31,5 @@ public class WorkoutDay extends BaseEntity {
         this.sequence = sequence;
         this.workoutPlan = workoutPlan;
     }
+
 }

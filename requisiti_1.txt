@@ -1,0 +1,20 @@
+requisiti funzionali gymbro 14/06/2025
+	
+	x ricerca testuale per workoutPlan
+	x visualizzare tutti i workoutPlan di un utente
+	x creare nuovo workoutPlan
+	x modificare workoutPlan
+	x eliminare workoutPlan
+
+	x visualizzare tutti i workoutDay di un workoutPlan
+	x aggiungere un workoutDay ad un workoutPlan
+	x aggiungere workoutDay in gruppo ad un workoutPlan
+	x modificare workoutDay di un workoutPlan
+	x modificare in gruppo workoutDay di un workoutPlan
+	x eliminare workoutDay di un workoutPlan
+
+	x aggiungere workoutDayExercise in bacth al workoutDay
+	x aggiungere workoutDayExercise singolo al workoutDay 
+	x modificare workoutDayExercise al workoutDay
+	x eliminare workoutDayExercise al workoutDay
+	

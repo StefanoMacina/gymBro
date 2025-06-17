@@ -18,11 +18,9 @@ public class UserApp extends BaseEntity {
 
     private String email;
 
-    @OneToMany(mappedBy = "user")
-    private List<WorkoutPlan> workoutPlans;
+    private String pwd;
 
-    public UserApp(String username, String email) {
-        this.username = username;
-        this.email = email;
-    }
+//    @OneToMany(mappedBy = "user")
+//    private List<WorkoutPlan> workoutPlans;
+
 }

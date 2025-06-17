@@ -9,10 +9,10 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring", uses = EntityMapperUtil.class, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
 public abstract class UserMapper implements GenericMapper<UserDTO, UserApp> {
 
-    @Mapping(target = "workoutPlans", source = "workoutPlans")
+    //@Mapping(target = "workoutPlans", source = "workoutPlans")
     public abstract UserDTO toDto(UserApp entity);
 
-    @Mapping(target = "workoutPlans", ignore = true)
+    //@Mapping(target = "workoutPlans", ignore = true)
     public abstract UserApp toEntity(UserDTO dto);
 
     @Override

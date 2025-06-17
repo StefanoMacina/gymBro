@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { WorkoutBuilderComponent } from '../components/workoutBuilder/workout-builder/workout-builder.component';
 
 export const routes: Routes = [
   {

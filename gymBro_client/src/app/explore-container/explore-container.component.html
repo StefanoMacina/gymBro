@@ -1,12 +1,61 @@
 <div id="container">
-  <strong>{{ name }}</strong>
-  <p>
-    Explore
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://ionicframework.com/docs/components"
-      >UI Components</a
-    >
-  </p>
+  @switch (name) { @case ('welcome') {
+  <div id="container">welcome</div>
+  } @case ('workout') {
+  <h2>Workout in corso</h2>
+  } @case ('userSettings') {
+  <div id="container">
+    
+    <ion-item>
+      <ion-select
+        label="Workout Plan"
+        label-placement="fixed"
+        placeholder="Seleziona un workout"
+        [(ngModel)]="selectedPlan"
+        (ionChange)="onWorkoutPlanChange($event)"
+      >
+        @for(plan of workoutPlans; track plan.id ){
+        <ion-select-option [value]="plan.id">
+          {{ plan.name }} {{ plan.endDate }}
+        </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+
+    <ion-segment [(ngModel)]="selectedDayId" scrollable="true">
+      @for(day of workoutDays; track day.id){
+      <ion-segment-button [value]="day.id">
+        <ion-label>{{ day.name }}</ion-label>
+      </ion-segment-button>
+      }
+    </ion-segment>
+
+    @for(day of workoutDays; track day.id){
+    <div *ngIf="day.id === selectedDayId">
+      @for(exercise of day.exercises; track exercise.id){
+      <ion-card id="exercise-card">
+        <div id="ex-image">
+          <img
+            alt="{{ exercise.exercise.name }}"
+            [src]="'assets/exercises/' + exercise.exercise.name + '.png'"
+            (error)="onImageError($event)"
+          />
+        </div>
+        <ion-card-header id="ex-description">
+          <div id="ex-details">
+            <ion-card-title>{{ exercise.exercise.name }}</ion-card-title>
+            <ion-chip disabled="true"
+              >{{ exercise.sets }} x {{ exercise.reps }}</ion-chip
+            >
+          </div>
+          <ion-card-subtitle>{{ exercise.notes }}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+      }
+    </div>
+    }
+  </div>
+  } @default {
+  <p>Contenuto non disponibile.</p>
+  } }
 </div>

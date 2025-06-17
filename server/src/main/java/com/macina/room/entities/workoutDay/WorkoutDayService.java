@@ -3,15 +3,20 @@ package com.macina.room.entities.workoutDay;
 import com.macina.room.DTO.UpdateWorkoutDaySequenceDTO;
 import com.macina.room.crud.GenericServiceImpl;
 import com.macina.room.entities.WorkoutPlan.WorkoutPlan;
+import com.macina.room.entities.WorkoutPlan.WorkoutPlanDTO;
 import com.macina.room.entities.WorkoutPlan.WorkoutPlanRepository;
+import com.macina.room.entities.user.UserApp;
+import com.macina.room.service.NameableServiceImpl;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 @Service
-public class WorkoutDayService extends GenericServiceImpl<WorkoutDayDTO,WorkoutDay> {
+public class WorkoutDayService extends NameableServiceImpl<WorkoutDayDTO,WorkoutDay> {
 
     @Autowired
     private WorkoutDayRepository workoutDayRepository;
@@ -21,6 +26,19 @@ public class WorkoutDayService extends GenericServiceImpl<WorkoutDayDTO,WorkoutD
 
     public WorkoutDayService(WorkoutDayRepository repository, WorkoutDayMapper mapper) {
         super(repository, mapper);
+    }
+
+    /**
+     *  retrieve all workoutDay associated with a given workoutPlan by workoutPlan ID
+     * @param pageable
+     * @param id workoutPlanID
+     * @return
+     */
+    @Transactional
+    public Page<WorkoutDayDTO> findAllByWorkoutPlanID(Pageable pageable, Long id){
+        return workoutDayRepository.findAllByWorkoutPlan_Id(pageable,id).map(
+                mapper::toDto
+        );
     }
 
     /** allow to create multiple workoutDay after selecting a workoutPlan, sequence generated automatically in ascending order
@@ -67,4 +85,15 @@ public class WorkoutDayService extends GenericServiceImpl<WorkoutDayDTO,WorkoutD
         return updated.stream().map(mapper::toDto).toList();
     }
 
+    @Override
+    public WorkoutDayDTO create(WorkoutDayDTO dto) {
+        WorkoutDay entity = mapper.toEntity(dto);
+
+        WorkoutPlan plan = workoutPlanRepository.findById(dto.getWorkoutPlanId())
+                .orElseThrow(() -> new RuntimeException("WorkoutPlan not found with id: " + dto.getWorkoutPlanId()));
+        entity.setWorkoutPlan(plan);
+
+        entity = workoutDayRepository.save(entity);
+        return mapper.toDto(entity);
+    }
 }

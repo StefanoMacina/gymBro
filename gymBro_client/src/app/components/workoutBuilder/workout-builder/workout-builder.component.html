@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Workout Builder</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar show-clear-button="focus" value="" placeholder="Search Plan"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @for(plan of workoutPlans; track plan.id) {
+  <ion-card>
+    <ion-item lines="none">
+      <ion-label>
+        <h2>{{ plan.name }}</h2>
+      </ion-label>
+
+      <ion-badge slot="end" color="{{ plan.isActive ? 'success' : 'medium' }}">
+        {{ plan.isActive ? "Attivo" : "Inattivo" }}
+      </ion-badge>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-label>
+          <p>Inizio: {{ plan.startDate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-label>
+          <p>Fine: {{ plan.endDate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>
+          <p>Creato da: {{ plan.isBuiltFromUser ? "Utente" : "Sistema" }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  }
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

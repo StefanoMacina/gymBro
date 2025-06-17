@@ -100,7 +100,7 @@ public class StartDataService {
 
     public void initUsers(){
         UserApp u = new UserApp(
-                "default","def@email.com"
+                "default","def@email.com","password1234"
         );
         if(!userRepository.existsByUsername(u.getUsername())){
             userRepository.save(u);

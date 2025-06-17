@@ -26,12 +26,14 @@ com\macina\room\entities\exercise\ExerciseMapperImpl.class
 com\macina\room\entities\workoutDay\WorkoutDayMapperImpl.class
 com\macina\room\entities\workoutDayExercise\WorkoutDayExercise.class
 com\macina\room\entities\WorkoutPlan\WorkoutPlanMapperImpl.class
+com\macina\room\config\CorsConfig.class
 com\macina\room\crud\GenericController.class
 com\macina\room\crud\GenericRepository.class
 com\macina\room\entities\workoutDay\WorkoutDayDTO.class
 com\macina\room\entities\user\UserController.class
 com\macina\room\entities\workoutDayExercise\WorkoutDayExerciseRepository.class
 com\macina\room\entities\workoutDayExercise\WorkoutDayExerciseDTO.class
+com\macina\room\config\CorsConfig$1.class
 com\macina\room\entities\user\UserRepository.class
 com\macina\room\entities\workoutDayExercise\WorkoutDayExerciseController.class
 com\macina\room\interfaces\Nameable.class
@@ -61,6 +63,5 @@ com\macina\room\repository\NameableRepository.class
 com\macina\room\entities\bodyGroup\BodyGroupDTO.class
 com\macina\room\entities\workoutDayExercise\WorkoutDayExerciseMapper.class
 com\macina\room\entities\workoutDayExercise\WorkoutDayExercise$WorkoutDayExerciseBuilder.class
-com\macina\room\entities\workoutDayExercise\WorkoutDayExerciseDTO$WorkoutDayExerciseDTOBuilder.class
 com\macina\room\DTO\ExerciseMapDTO.class
 com\macina\room\helper\Helper.class

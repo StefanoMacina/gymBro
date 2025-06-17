@@ -33,7 +33,4 @@ public class WorkoutPlanController extends GenericNameableController<WorkoutPlan
     }
 
 
-
-
-
 }

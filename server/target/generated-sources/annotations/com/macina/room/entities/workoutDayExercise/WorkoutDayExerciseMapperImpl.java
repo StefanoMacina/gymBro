@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-07T18:10:48+0200",
+    date = "2025-06-17T12:19:04+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
@@ -23,16 +23,19 @@ public class WorkoutDayExerciseMapperImpl extends WorkoutDayExerciseMapper {
             return null;
         }
 
-        WorkoutDayExerciseDTO.WorkoutDayExerciseDTOBuilder workoutDayExerciseDTO = WorkoutDayExerciseDTO.builder();
+        WorkoutDayExerciseDTO workoutDayExerciseDTO = new WorkoutDayExerciseDTO();
 
-        workoutDayExerciseDTO.workoutDayId( entityWorkoutDayId( entity ) );
-        workoutDayExerciseDTO.sets( entity.getSets() );
-        workoutDayExerciseDTO.reps( entity.getReps() );
-        workoutDayExerciseDTO.notes( entity.getNotes() );
-        workoutDayExerciseDTO.exercise( exerciseMapper.toDto( entity.getExercise() ) );
-        workoutDayExerciseDTO.sequence( entity.getSequence() );
+        workoutDayExerciseDTO.setWorkoutDayId( entityWorkoutDayId( entity ) );
+        workoutDayExerciseDTO.setExercise( exerciseMapper.toDto( entity.getExercise() ) );
+        workoutDayExerciseDTO.setId( entity.getId() );
+        workoutDayExerciseDTO.setCreatedAt( entity.getCreatedAt() );
+        workoutDayExerciseDTO.setUpdatedAt( entity.getUpdatedAt() );
+        workoutDayExerciseDTO.setSets( entity.getSets() );
+        workoutDayExerciseDTO.setReps( entity.getReps() );
+        workoutDayExerciseDTO.setNotes( entity.getNotes() );
+        workoutDayExerciseDTO.setSequence( entity.getSequence() );
 
-        return workoutDayExerciseDTO.build();
+        return workoutDayExerciseDTO;
     }
 
     @Override

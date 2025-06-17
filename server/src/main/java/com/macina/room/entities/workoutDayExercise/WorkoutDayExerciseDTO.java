@@ -9,7 +9,6 @@ import lombok.*;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class WorkoutDayExerciseDTO extends BaseDTO {
     private Integer sets;
     private Integer reps;

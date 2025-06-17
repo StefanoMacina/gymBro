@@ -55,7 +55,7 @@ public class WorkoutPlanService extends NameableServiceImpl<WorkoutPlanDTO, Work
         UserApp user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + dto.getUserId()));
         entity.setUser(user);
-
+        entity.setIsBuiltFromUser(true);
         entity = workoutPlanRepository.save(entity);
         return mapper.toDto(entity);
     }
