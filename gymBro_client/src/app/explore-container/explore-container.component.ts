@@ -1,17 +1,18 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { IonButtons, IonContent, IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar,IonItem, IonSelect, IonSelectOption,IonChip , IonLabel, IonSegment, IonSegmentButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle  } from '@ionic/angular/standalone';
-import { WorkoutPlanDTO } from '../models/workoutPlan.dto';
-import { WorkoutPlanService } from '../service/workout.plan.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { WorkoutDaysService } from '../service/workout.days.service';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonChip, IonItem, IonLabel, IonSegment, IonSegmentButton, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
 import { WorkoutDayDTO } from '../models/workoutDay.dto';
+import { WorkoutPlanDTO } from '../models/workoutPlan.dto';
+import { WorkoutDaysService } from '../service/workout.days.service';
+import { WorkoutPlanService } from '../service/workout.plan.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-explore-container',
   standalone: true,
   templateUrl: './explore-container.component.html',
-  imports: [ IonItem, IonSelect, IonSelectOption, CommonModule,IonChip , FormsModule, IonLabel, IonSegment, IonSegmentButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle ],
+  imports: [FormsModule, IonItem, IonButton,IonSelect, IonSelectOption, CommonModule,IonChip , IonLabel, IonSegment, IonSegmentButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle ],
   styleUrls: ['explore-container.component.scss']
 })
 export class ExploreContainerComponent implements OnInit {
@@ -22,13 +23,20 @@ export class ExploreContainerComponent implements OnInit {
 
   workoutPlans: WorkoutPlanDTO[] = [];
   workoutDays: WorkoutDayDTO[] = [];
+  planLenght: number = 0;
 
   private workoutPlanService = inject(WorkoutPlanService);
   private workoutDaysService = inject(WorkoutDaysService);
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(){
+    if (this.name === 'userSettings') {
+      this.loadWorkoutPlans();
+    }
+  }
+
+  ionViewWillEnter() {
     if (this.name === 'userSettings') {
       this.loadWorkoutPlans();
     }
@@ -38,6 +46,7 @@ export class ExploreContainerComponent implements OnInit {
     this.workoutPlanService.getWorkoutPlansByUser(1).subscribe({
       next: (response) => {
         if (response.success) {
+          this.planLenght = response.data.totalElements
           this.workoutPlans = response.data.content;
         }
       },
@@ -69,9 +78,13 @@ export class ExploreContainerComponent implements OnInit {
   }
 
   onImageError(event: Event) {
-  const imgElement = event.target as HTMLImageElement;
-  imgElement.src = 'https://ionicframework.com/docs/img/demos/card-media.png';
-}
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = 'https://ionicframework.com/docs/img/demos/card-media.png';
+  }
+
+  goToWorkoutBuilder(){
+    this.router.navigate(['/workout-builder'])
+  }
 
 }
 

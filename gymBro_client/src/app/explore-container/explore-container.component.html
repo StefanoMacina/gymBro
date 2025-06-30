@@ -1,16 +1,17 @@
-<div id="container">
+<div id="all-container">
   @switch (name) { @case ('welcome') {
   <div id="container">welcome</div>
   } @case ('workout') {
   <h2>Workout in corso</h2>
   } @case ('userSettings') {
-  <div id="container">
-    
+
+  <div class="container">
+    @if(planLenght>0){
     <ion-item>
       <ion-select
         label="Workout Plan"
         label-placement="fixed"
-        placeholder="Seleziona un workout"
+        placeholder="Seleziona un piano"
         [(ngModel)]="selectedPlan"
         (ionChange)="onWorkoutPlanChange($event)"
       >
@@ -53,8 +54,16 @@
       </ion-card>
       }
     </div>
-    }
+    } 
+  }@else {
+    <div id="no-content">
+      <img src="../../assets/icon/fitness.png" alt="" width="100px" height="100px">
+      <p>Create a workout plan first</p>
+      <ion-button (click)="goToWorkoutBuilder()">Create</ion-button>
+    </div>
+  }
   </div>
+
   } @default {
   <p>Contenuto non disponibile.</p>
   } }

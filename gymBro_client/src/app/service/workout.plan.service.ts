@@ -27,5 +27,7 @@ export class WorkoutPlanService {
   }
 
 
-
+  createWorkoutPlan(dto: WorkoutPlanDTO): Observable<ResponseDto<Page<WorkoutPlanDTO>>> {
+    return this.http.post<ResponseDto<Page<WorkoutPlanDTO>>>(this.baseUrl, dto);
+  }
 }

@@ -1,0 +1,45 @@
+<ion-content *ngIf="config[step]">
+
+  <!-- Titolo / label dello step -->
+  <div class="step-title">
+    {{ config[step].label }}
+  </div>
+
+  <!-- Lista di campi dello step -->
+  <div *ngFor="let field of config[step].fields">
+
+    <ion-input labelPlacement="floating"  label="{{field.label}}" *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'date'"
+               [type]="field.type"
+               [(ngModel)]="formValues[field.name]"
+               [placeholder]="field.placeholder">
+    </ion-input>
+
+    <ion-textarea label="{{field.label}}" *ngIf="field.type === 'textarea'"
+                  [(ngModel)]="formValues[field.name]"
+                  [placeholder]="field.placeholder">
+    </ion-textarea>
+
+    <ion-select label="{{field.label}}" *ngIf="field.type === 'select'"
+                [(ngModel)]="formValues[field.name]">
+      <ion-select-option *ngFor="let opt of field.options" [value]="opt.value">
+        {{ opt.label }}
+      </ion-select-option>
+    </ion-select>
+    
+  </div>
+
+  <!-- Bottoni di navigazione -->
+  <div class="icon-step-container">
+    <ion-button *ngIf="step > 0" fill="clear" (click)="prevStep()">
+      <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button *ngIf="step < config.length - 1" fill="clear" (click)="nextStep()">
+      <ion-icon slot="icon-only" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button *ngIf="step === config.length - 1" color="success" fill="clear" (click)="submit()">
+      <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>
